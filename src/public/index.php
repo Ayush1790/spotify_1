@@ -30,6 +30,7 @@ $loader->registerDirs(
 $loader->registerNamespaces([
     "MyApp\component" => APP_PATH . '/component',
     "MyApp\Models" => APP_PATH . '/models',
+    "MyApp\Controllers"=>APP_PATH.'/controllers',
 ]);
 
 

@@ -23,22 +23,20 @@ class MyController extends Controller
             if ($value['type'] == 'tracks') {
                 $img = $data['album']['images'][0]['url'];
             }
-            print_r($value['type']);
             $view .= "<div class='card col-3 p-3 border  border-5 border-white bg-dark text-light mb-1'
                  style='width: 18rem;height:330px;border-radius:10px; '>
         <img class='card-img-top' src=' " . $img . " ' alt='Card image cap' height=180px>
         <div class='card-body'>
           <h6 class='card-title'>$data[name]</h6>
-          <a href='my/delete?id=$value[id]' class='btn btn-primary border border-white'>Delete $value[type]</a>
+          <a href='my/delete?delid=$value[id]' class='btn btn-primary border border-white'>Delete $value[type]</a>
         </div>
-      </div>
-      ";
+      </div>";
         }
         $this->view->view = $view;
     }
     public function deleteAction()
     {
-        $id = $this->request->get('id');
+        $id = $this->request->get('delid');
         $playlists = Playlists::findFirst($id);
         $playlists->delete();
         $this->response->redirect('my');
